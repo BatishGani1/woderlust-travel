@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Custom Kashmir Plan - Wonderlust Travels Kashmir</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="booking.css">
+  <script defer src="custom-plan.js"></script>
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">Wonderlust Travels Kashmir</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="booking.html">Booking</a>
+    </nav>
+  </header>
+  <section class="custom-plan-section">
+    <h2>Create Your Own Custom Kashmir Plan</h2>
+    <form id="custom-plan-form">
+      <div class="form-group">
+        <label for="custom-name">Name</label>
+        <input type="text" id="custom-name" name="custom-name" required>
+      </div>
+      <div class="form-group">
+        <label for="custom-phone">Phone Number</label>
+        <input type="tel" id="custom-phone" name="custom-phone" required pattern="[0-9]{10}">
+      </div>
+      <div class="form-group">
+        <label for="custom-locations">Locations to Visit (add one at a time)</label>
+        <div class="custom-locations-input">
+          <input type="text" id="custom-location-input" placeholder="e.g. Gulmarg">
+          <button type="button" id="add-location-btn">Add</button>
+        </div>
+        <ul id="custom-locations-list"></ul>
+      </div>
+      <div class="form-group">
+        <label for="custom-preferences">Preferences (e.g. adventure, family, honeymoon, food, etc.)</label>
+        <input type="text" id="custom-preferences" name="custom-preferences" placeholder="e.g. adventure, food">
+      </div>
+      <div class="form-group">
+        <label for="custom-message">Message (optional)</label>
+        <textarea id="custom-message" name="custom-message" rows="3"></textarea>
+      </div>
+      <button type="submit" class="cta-btn">Send Custom Plan to WhatsApp</button>
+    </form>
+  </section>
+  <section class="brochure-section">
+    <h2>Download Our Brochure</h2>
+    <p>Get all the details about our Kashmir tours, plans, and services in our beautifully designed brochure.</p>
+    <a href="Wonderlust-Kashmir-Brochure.pdf" download class="cta-btn">Download Brochure (PDF)</a>
+  </section>
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="booking.html">Booking</a>
+      <a href="custom-plan.html">Custom Plan</a>
+      <a href="admin.html">Admin</a>
+      <a href="https://wa.me/916006442046" target="_blank">Contact via WhatsApp</a>
+    </div>
+    <p>&copy; 2024 Wonderlust Travels Kashmir. All rights reserved.</p>
+  </footer>
+</body>
+</html> 

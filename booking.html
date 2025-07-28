@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Your Kashmir Tour - Wonderlust Travels Kashmir</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="booking.css">
+  <script defer src="booking.js"></script>
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">Wonderlust Travels Kashmir</div>
+    <nav>
+      <a href="index.html">Home</a>
+    </nav>
+  </header>
+  <section class="booking-form-section">
+    <h2>Book Your Kashmir Tour</h2>
+    <form id="booking-form">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}">
+      </div>
+      <div class="form-group">
+        <label for="plan">Select Plan</label>
+        <select id="plan" name="plan">
+          <!-- Options will be injected by JS -->
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">Message (optional)</label>
+        <textarea id="message" name="message" rows="3"></textarea>
+      </div>
+      <button type="submit" class="cta-btn">Send to WhatsApp</button>
+    </form>
+  </section>
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="booking.html">Booking</a>
+      <a href="custom-plan.html">Custom Plan</a>
+      <a href="admin.html">Admin</a>
+      <a href="https://wa.me/916006442046" target="_blank">Contact via WhatsApp</a>
+    </div>
+    <p>&copy; 2024 Wonderlust Travels Kashmir. All rights reserved.</p>
+  </footer>
+</body>
+</html>

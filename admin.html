@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Wonderlust Travels Kashmir</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="admin.css">
+  <script defer src="admin.js"></script>
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">Admin Panel</div>
+    <nav>
+      <a href="index.html">Home</a>
+    </nav>
+  </header>
+  <section class="admin-section">
+    <h2>Manage Tour Plans</h2>
+    <form id="plan-form" class="admin-form">
+      <input type="hidden" id="plan-id">
+      <div class="form-group">
+        <label>Days</label>
+        <input type="number" id="days" min="1" required>
+      </div>
+      <div class="form-group">
+        <label>Locations</label>
+        <input type="text" id="location" required placeholder="e.g. Srinagar, Gulmarg">
+      </div>
+      <div class="form-group">
+        <label>Highlights (comma separated)</label>
+        <input type="text" id="highlights" required placeholder="e.g. Dal Lake, Mughal Gardens">
+      </div>
+      <div class="form-group">
+        <label>Price (in ₹)</label>
+        <input type="number" id="price" min="0" required>
+      </div>
+      <button type="submit" class="cta-btn" id="save-btn">Add Plan</button>
+      <button type="button" class="cta-btn" id="cancel-btn" style="display:none;background:#888;">Cancel</button>
+    </form>
+    <div class="plans-list" id="admin-plans-list">
+      <!-- Admin plans will be listed here -->
+    </div>
+  </section>
+</body>
+</html> 

@@ -1,0 +1,65 @@
+.custom-plan-section {
+  max-width: 500px;
+  margin: 3rem auto 2rem auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 16px rgba(46,139,87,0.08);
+  padding: 2.5rem 2rem 2rem 2rem;
+}
+.custom-plan-section h2 {
+  text-align: center;
+  color: #2e8b57;
+  margin-bottom: 2rem;
+}
+.custom-locations-input {
+  display: flex;
+  gap: 0.7rem;
+  margin-bottom: 0.7rem;
+}
+#custom-location-input {
+  flex: 1;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #cce5d3;
+  font-size: 1rem;
+  background: #f5f7fa;
+}
+#add-location-btn {
+  background: #2e8b57;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#add-location-btn:hover {
+  background: #25643a;
+}
+#custom-locations-list {
+  list-style: disc inside;
+  margin: 0 0 0.5rem 0.5rem;
+  color: #25643a;
+}
+#custom-locations-list li {
+  margin-bottom: 0.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.remove-location-btn {
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  transition: background 0.2s;
+}
+.remove-location-btn:hover {
+  background: #922b1a;
+} 
