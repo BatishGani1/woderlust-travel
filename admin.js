@@ -1,4 +1,46 @@
 const LS_KEY = 'wonderlust_kashmir_plans';
+const ADMIN_PASSWORD = 'kashmir2024'; // Set your desired password here
+
+// Admin authentication
+function checkAdminLogin() {
+  const loginForm = document.getElementById('admin-login-form');
+  const adminContent = document.getElementById('admin-content');
+  const loginOverlay = document.getElementById('admin-login-overlay');
+  
+  // Check if already authenticated in this session
+  if (sessionStorage.getItem('admin_authenticated') === 'true') {
+    loginOverlay.style.display = 'none';
+    adminContent.style.display = 'block';
+    renderPlans(); // Load content immediately
+    return;
+  }
+
+  loginForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const passwordInput = document.getElementById('admin-password');
+    const errorElement = document.getElementById('password-error');
+    
+    if (passwordInput.value === ADMIN_PASSWORD) {
+      // Set session authentication
+      sessionStorage.setItem('admin_authenticated', 'true');
+      
+      // Show admin content
+      loginOverlay.style.display = 'none';
+      adminContent.style.display = 'block';
+      
+      // Clear password field
+      passwordInput.value = '';
+      errorElement.textContent = '';
+      
+      // Load admin content
+      renderPlans();
+    } else {
+      errorElement.textContent = 'Incorrect password. Please try again.';
+      passwordInput.value = '';
+      passwordInput.focus();
+    }
+  });
+}
 
 function getPlans() {
   return JSON.parse(localStorage.getItem(LS_KEY) || '[]');
@@ -79,4 +121,8 @@ document.getElementById('cancel-btn').addEventListener('click', function() {
 });
 window.editPlan = editPlan;
 window.deletePlan = deletePlan;
-document.addEventListener('DOMContentLoaded', renderPlans); 
+
+// Initialize authentication and admin functionality
+document.addEventListener('DOMContentLoaded', function() {
+  checkAdminLogin();
+}); 

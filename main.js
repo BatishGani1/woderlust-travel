@@ -3,44 +3,73 @@ const LS_KEY = 'wonderlust_kashmir_plans';
 function getPlans() {
   const stored = localStorage.getItem(LS_KEY);
   if (stored) return JSON.parse(stored);
-  // Default plans if none in localStorage
+  
+  // Local Kashmir landscape images from assets folder
+  const kashmirImages = {
+    pahalgam: './assets/1.jpg',
+    sonamarg: './assets/2.jpg',
+    gulmarg: './assets/3.jpg',
+    mughalGardens: './assets/4.jpg',
+    dalLake: './assets/5.jpg',
+    shikara: './assets/6.jpg'
+  };
+  
+  // Default Kashmir packages with local images from assets folder
   return [
     {
-      days: 10,
-      location: 'Srinagar, Gulmarg, Pahalgam',
-      price: 35000,
-      highlights: [
-        'Dal Lake Shikara Ride',
-        'Gulmarg Gondola',
-        'Pahalgam Valley Trek',
-        'Mughal Gardens',
-        'Local Kashmiri Cuisine',
-      ],
+      title: 'Kashmir Tour Package',
+      duration: '4 days & 3 nights',
+      price: 11999, // 11500 + 499
+      inclusions: 'Hotel, Meal & Cab',
+      locations: 'Srinagar, Gulmarg & Pahalgam',
+      service: 'Pick & Drop Service in Srinagar',
+      image: kashmirImages.pahalgam // Pahalgam
     },
     {
-      days: 20,
-      location: 'Srinagar, Sonamarg, Gulmarg, Pahalgam, Yusmarg',
-      price: 65000,
-      highlights: [
-        'Sonamarg Glacier',
-        'Gulmarg Skiing',
-        'Betaab Valley',
-        'Yusmarg Meadows',
-        'Shopping in Srinagar',
-      ],
+      title: 'Magical Kashmir Package',
+      duration: '5 days & 4 nights',
+      price: 13999, // 13500 + 499
+      inclusions: 'Hotel, Meal & Cab',
+      locations: 'Srinagar, Gulmarg & Pahalgam',
+      service: 'Pick & Drop Service in Srinagar',
+      image: kashmirImages.sonamarg // Sonamarg
     },
     {
-      days: 30,
-      location: 'Srinagar, Gulmarg, Pahalgam, Sonamarg, Doodhpathri, Kupwara',
-      price: 95000,
-      highlights: [
-        'Doodhpathri Meadows',
-        'Kupwara Adventure',
-        'Extended Trekking',
-        'Cultural Experiences',
-        'All 20-day plan highlights',
-      ],
+      title: 'Alluring Kashmir Package',
+      duration: '6 days & 5 nights',
+      price: 15999, // 15500 + 499
+      inclusions: 'Hotel, Meal & Cab',
+      locations: 'Srinagar, Gulmarg & Pahalgam',
+      service: 'Pick & Drop Service in Srinagar',
+      image: kashmirImages.gulmarg // Gulmarg
     },
+    {
+      title: 'Short Escape Kashmir Package',
+      duration: '7 days & 6 nights',
+      price: 17999, // 17500 + 499
+      inclusions: 'Hotel, Meal & Cab',
+      locations: 'Srinagar, Gulmarg & Pahalgam',
+      service: 'Pick & Drop Service in Srinagar',
+      image: kashmirImages.mughalGardens // Mughal Gardens
+    },
+    {
+      title: 'Honeymoon Tour Package',
+      duration: '6 days & nights',
+      price: 37999, // 37500 + 499
+      inclusions: 'Hotel, Meal & Cab',
+      locations: 'Srinagar, Gulmarg & Pahalgam',
+      service: 'Pick & Drop Service in Srinagar',
+      image: kashmirImages.dalLake // Dal Lake
+    },
+    {
+      title: 'Magical Kashmir',
+      duration: '9 days & 8 nights',
+      price: 22999, // 22500 + 499
+      inclusions: 'Hotel, Meal & Cab',
+      locations: 'Srinagar, Gulmarg & Pahalgam',
+      service: 'Pick & Drop Service in Srinagar',
+      image: kashmirImages.shikara // Shikara
+    }
   ];
 }
 
@@ -49,41 +78,65 @@ function formatRupees(num) {
 }
 
 function createPlanCard(plan, idx) {
+  const priceText = plan.title === 'Honeymoon Tour Package' ? 
+    `${formatRupees(plan.price)}/Couple` : 
+    `${formatRupees(plan.price)}/person`;
+    
   return `
     <div class="plan-card" style="animation-delay: ${idx * 0.2}s">
-      <h3>${plan.days}-Day Kashmir Tour</h3>
-      <div class="price">${formatRupees(plan.price)}</div>
-      <div><strong>Locations:</strong> ${plan.location}</div>
-      <ul>
-        ${plan.highlights.map(h => `<li>${h}</li>`).join('')}
-      </ul>
-      <a href="booking.html?plan=${encodeURIComponent(plan.days + '-Day Kashmir Tour @ ' + formatRupees(plan.price))}" class="book-btn">Book Now</a>
+      <div class="plan-image">
+        <img src="${plan.image}" alt="${plan.title}" />
+      </div>
+      <div class="plan-content">
+        <h3>${plan.title}</h3>
+        <div class="plan-duration">${plan.duration}</div>
+        <div class="plan-price">Starting Price: ${priceText}</div>
+        <div class="plan-inclusions"><strong>Inclusions:</strong> ${plan.inclusions}</div>
+        <div class="plan-locations"><strong>Locations:</strong> ${plan.locations}</div>
+        <div class="plan-service">${plan.service}</div>
+        <div class="plan-actions">
+          <button onclick="openQuoteModal('${plan.title}', '${priceText}')" class="quote-btn">Get a Quote</button>
+          <a href="tel:8899127434" class="phone-btn">+91 8899127434</a>
+        </div>
+      </div>
     </div>
   `;
 }
 
-// Hero Slideshow images and content
+// Hero Slideshow images and content - using specific hero images
 const heroSlides = [
   {
-    img: 'https://images.unsplash.com/photo-1614730325121-6d8d6d6e7e1f?auto=format&fit=crop&w=1920&q=80',
-    title: 'Explore the Paradise of Kashmir',
-    description: 'Unforgettable journeys, breathtaking landscapes, and curated experiences await you.',
+    img: './assets/hero1.jpg',
+    title: 'Discover Kashmir\'s Beauty',
+    description: 'Explore the paradise on Earth with our curated travel experiences.',
+    buttonText: 'View Packages',
+    buttonLink: '#plans',
+    secondButtonText: 'Download Brochure',
+    secondButtonLink: './assets/brochure.pdf',
+    thirdButtonText: 'Call Us',
+    thirdButtonLink: 'tel:+918899127434'
+  },
+  {
+    img: './assets/hero2.png',
+    title: 'Exclusive Kashmir Tours',
+    description: 'From snow-capped mountains to serene lakes, every moment is magical.',
     buttonText: 'Book Now',
     buttonLink: 'booking.html',
+    secondButtonText: 'Download Brochure',
+    secondButtonLink: './assets/brochure.pdf',
+    thirdButtonText: 'Call Us',
+    thirdButtonLink: 'tel:+918899127434'
   },
   {
-    img: 'https://images.unsplash.com/photo-1549880338-65ddcdfd017b?auto=format&fit=crop&w=1920&q=80',
-    title: 'Design Your Dream Tour',
-    description: 'Tailor-made itineraries just for you. Create your perfect Kashmir adventure.',
-    buttonText: 'Create Custom Plan',
-    buttonLink: 'custom-plan.html',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1536329583941-142876654848?auto=format&fit=crop&w=1920&q=80',
-    title: 'Wonderlust Travels Kashmir',
-    description: 'Your trusted partner for exploring the beauty of Kashmir. Experience excellence.',
-    buttonText: 'Learn More',
+    img: './assets/hero3.jpg',
+    title: 'Experience Paradise',
+    description: 'Your trusted partner for exploring the beauty of Kashmir.',
+    buttonText: 'Get Quote',
     buttonLink: '#plans',
+    secondButtonText: 'Download Brochure',
+    secondButtonLink: './assets/brochure.pdf',
+    thirdButtonText: 'Call Us',
+    thirdButtonLink: 'tel:+918899127434'
   },
 ];
 let currentHeroSlide = 0;
@@ -107,7 +160,11 @@ function renderHeroSlideshow() {
     contentDiv.innerHTML = `
       <h1>${slide.title}</h1>
       <p>${slide.description}</p>
-      ${slide.buttonText ? `<a href="${slide.buttonLink}" class="cta-btn">${slide.buttonText}</a>` : ''}
+      <div class="hero-buttons">
+        ${slide.buttonText ? `<a href="${slide.buttonLink}" class="cta-btn primary-btn"><i class="fas fa-arrow-right"></i> ${slide.buttonText}</a>` : ''}
+        ${slide.secondButtonText ? `<a href="${slide.secondButtonLink}" class="cta-btn secondary-btn" download><i class="fas fa-download"></i> ${slide.secondButtonText}</a>` : ''}
+        ${slide.thirdButtonText ? `<a href="${slide.thirdButtonLink}" class="cta-btn tertiary-btn"><i class="fas fa-phone"></i> ${slide.thirdButtonText}</a>` : ''}
+      </div>
     `;
     slideItem.appendChild(contentDiv);
 
@@ -122,6 +179,67 @@ function showNextHeroSlide() {
   slideItems[currentHeroSlide].classList.add('active');
 }
 
+// Modal functions
+function openQuoteModal(packageTitle, price) {
+  document.getElementById('selectedPackage').value = packageTitle;
+  document.getElementById('selectedPrice').value = price;
+  document.getElementById('quoteModal').style.display = 'block';
+  document.body.style.overflow = 'hidden'; // Prevent background scrolling
+}
+
+function closeQuoteModal() {
+  document.getElementById('quoteModal').style.display = 'none';
+  document.body.style.overflow = 'auto'; // Restore scrolling
+  document.getElementById('quoteForm').reset();
+}
+
+// Close modal when clicking outside of it
+window.onclick = function(event) {
+  const modal = document.getElementById('quoteModal');
+  if (event.target === modal) {
+    closeQuoteModal();
+  }
+}
+
+// Handle form submission
+function handleQuoteSubmit(event) {
+  event.preventDefault();
+  
+  const form = event.target;
+  const submitBtn = form.querySelector('.submit-btn');
+  const originalText = submitBtn.textContent;
+  
+  // Show loading state
+  submitBtn.textContent = 'Sending...';
+  submitBtn.disabled = true;
+  
+  const formData = new FormData(form);
+  
+  // Send form data to PHP script
+  fetch('send-quote.php', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      closeQuoteModal();
+      window.location.href = 'thank-you.html';
+    } else {
+      alert(data.error || 'Something went wrong. Please try again.');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('Network error. Please try again or contact us directly.');
+  })
+  .finally(() => {
+    // Reset button state
+    submitBtn.textContent = originalText;
+    submitBtn.disabled = false;
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   renderHeroSlideshow();
   setInterval(showNextHeroSlide, 8000); // Change slide every 8 seconds
@@ -129,11 +247,29 @@ document.addEventListener('DOMContentLoaded', () => {
   const plansContainer = document.getElementById('plans-container');
   const plans = getPlans();
   plansContainer.innerHTML = plans.map(createPlanCard).join('');
+  
+  // Add form submission handler
+  document.getElementById('quoteForm').addEventListener('submit', handleQuoteSubmit);
+  
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menu-toggle');
+  const mainNav = document.getElementById('main-nav');
+  
+  if (menuToggle && mainNav) {
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      mainNav.classList.toggle('active');
+    });
+    
+    // Close menu when clicking nav links
+    const navLinks = mainNav.querySelectorAll('a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        mainNav.classList.remove('active');
+      });
+    });
+  }
+});
 
-  // Add custom plan button below plans
-  const customBtn = document.createElement('a');
-  customBtn.href = 'custom-plan.html';
-  customBtn.className = 'custom-plan-btn';
-  customBtn.textContent = 'Create Your Own Custom Plan';
-  plansContainer.parentElement.appendChild(customBtn);
-}); 
+ 

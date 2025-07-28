@@ -5,14 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wonderlust Travels Kashmir</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="footer.css">
   <script defer src="main.js"></script>
+  <!-- Poppins Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header class="navbar">
-    <div class="logo">Wonderlust Travels Kashmir</div>
-    <nav>
+    <div class="logo">
+      <img src="./assets/logo.png" alt="Wonderlust Holidays Kashmir" class="logo-img">
+      <span class="logo-text">Wonderlust Holidays Kashmir</span>
+    </div>
+    <nav id="main-nav">
+      <a href="#" class="active">Home</a>
       <a href="#plans">Tour Plans</a>
+      <a href="#destinations">Destinations</a>
+      <a href="booking.html">Book Now</a>
+      <a href="#about">About Us</a>
+      <a href="tel:+918899127434" class="contact-link"><i class="fas fa-phone"></i> Call Us</a>
     </nav>
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </header>
   <section class="hero">
     <div class="hero-slideshow" id="hero-slideshow">
@@ -20,9 +36,36 @@
     </div>
   </section>
   <section id="plans" class="plans-section">
-    <h2>Our Tour Plans</h2>
+    <h2>KASHMIR PACKAGES</h2>
     <div class="plans-container" id="plans-container">
       <!-- Plans will be injected by JS -->
+    </div>
+  </section>
+  
+  <section class="why-choose-us">
+    <h2>Why Choose Us</h2>
+    <div class="features-container">
+      <div class="feature-card">
+        <div class="feature-icon">🌍</div>
+        <h3>Global Reach</h3>
+        <p>Explore destinations worldwide with our extensive network of travel partners.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏨</div>
+        <h3>Quality Accommodation</h3>
+        <p>Handpicked hotels and resorts meeting high standards of comfort and luxury.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">✈️</div>
+        <h3>Efficient Travel</h3>
+        <p>Seamless travel arrangements for a hassle-free experience.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👥</div>
+        <h3>Expert Guides</h3>
+        <p>Knowledgeable local guides enriching your travel experience with insights and stories.</p>
+      </div>
+    </div>
   </section>
   <section id="booking-form-section" class="booking-form-section" style="display:none;">
     <!-- Booking form removed, now on separate page -->
@@ -32,15 +75,272 @@
     <p>Get all the details about our Kashmir tours, plans, and services in our beautifully designed brochure.</p>
     <a href="Wonderlust-Kashmir-Brochure.pdf" download class="cta-btn">Download Brochure (PDF)</a>
   </section>
-  <footer>
-    <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="booking.html">Booking</a>
-      <a href="custom-plan.html">Custom Plan</a>
-      <a href="admin.html">Admin</a>
-      <a href="https://wa.me/916006442046" target="_blank">Contact via WhatsApp</a>
+
+  <!-- Quote Modal -->
+  <div id="quoteModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Get a Quote</h2>
+        <span class="close" onclick="closeQuoteModal()">&times;</span>
+      </div>
+      <form id="quoteForm" class="quote-form">
+        <input type="hidden" id="selectedPackage" name="package">
+        <input type="hidden" id="selectedPrice" name="price">
+        
+        <div class="form-row">
+          <div class="form-column">
+            <div class="form-group">
+              <label for="name">Name :</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone No. :</label>
+              <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+              <label for="adults">No. of Adults :</label>
+              <input type="number" id="adults" name="adults" min="1" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Message :</label>
+              <textarea id="message" name="message" rows="4"></textarea>
+            </div>
+          </div>
+          <div class="form-column">
+            <div class="form-group">
+              <label for="email">Email ID :</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="arrivalDate">Date of arrival :</label>
+              <input type="date" id="arrivalDate" name="arrivalDate" required>
+            </div>
+            <div class="form-group">
+              <label for="children">No. of Children :</label>
+              <input type="number" id="children" name="children" min="0" value="0">
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-actions">
+          <button type="submit" class="submit-btn">SUBMIT</button>
+          <p class="callback-text">No waiting • Get a Call Back</p>
+        </div>
+      </form>
+      <div class="modal-footer">
+        <button onclick="closeQuoteModal()" class="close-btn">Close</button>
+      </div>
     </div>
-    <p>&copy; 2024 Wonderlust Travels Kashmir. All rights reserved.</p>
+  </div>
+  <!-- Kashmir Destinations Section -->
+  <section id="destinations" class="destinations-section">
+    <h2>Explore Kashmir Destinations</h2>
+    <div class="destinations-grid">
+      <div class="destination-card">
+        <div class="destination-icon">🏞️</div>
+        <div class="destination-info">
+          <h3>Pahalgam</h3>
+          <p>Pahalgam is a picturesque town located in the Anantnag district of Jammu and Kashmir, known for its lush valleys and tranquil rivers.</p>
+        </div>
+      </div>
+      <div class="destination-card">
+        <div class="destination-icon">⛰️</div>
+        <div class="destination-info">
+          <h3>Sonamarg</h3>
+          <p>Sonamarg, the "meadow of gold," is a breathtaking hill station in the Ganderbal district, famous for its scenic beauty and adventure activities.</p>
+        </div>
+      </div>
+      <div class="destination-card">
+        <div class="destination-icon">🏔️</div>
+        <div class="destination-info">
+          <h3>Gulmarg</h3>
+          <p>Gulmarg, meaning "meadow of flowers," is a popular ski resort and hill station in Baramulla, offering stunning landscapes year-round.</p>
+        </div>
+      </div>
+      <div class="destination-card">
+        <div class="destination-icon">🌸</div>
+        <div class="destination-info">
+          <h3>Mughal Gardens</h3>
+          <p>The Mughal Gardens in Srinagar are renowned for their beautiful design, architecture, and horticulture, built by Mughal emperors in the 16th-17th centuries.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="about-content">
+      <div class="about-text">
+        <h2>About Wonderlust Travels Kashmir</h2>
+        <p><strong>Wonderlust Travels Kashmir</strong> is your trusted travel partner for exploring the beauty of Jammu & Kashmir. We specialize in leisure tours, honeymoon packages, group tours, adventure trips, hotel bookings, houseboat stays, and seamless transportation. Our years of experience ensure every journey is memorable and every customer is satisfied.</p>
+        <p>Our dedicated team is available 24/7 to help you create unforgettable memories in Kashmir. We look forward to making your travel dreams come true!</p>
+      </div>
+      <div class="about-image">
+        <img src="./assets/5.jpg" alt="Dal Lake Kashmir">
+      </div>
+    </div>
+  </section>
+  <!-- Newsletter Section -->
+  <section class="newsletter-section">
+    <div class="newsletter-container">
+      <div class="newsletter-content">
+        <h3>Subscribe to Our Newsletter</h3>
+        <p>Stay updated with our latest travel packages, offers and Kashmir tourism news.</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+  
+  <footer>
+    <div class="footer-wave">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="#007bff" fill-opacity="0.15" d="M0,128L48,133.3C96,139,192,149,288,154.7C384,160,480,160,576,138.7C672,117,768,75,864,74.7C960,75,1056,117,1152,122.7C1248,128,1344,96,1392,80L1440,64L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+      </svg>
+    </div>
+    
+    <div class="footer-content">
+      <div class="footer-info">
+        <div class="footer-logo">
+          <img src="./assets/logo.png" alt="Wonderlust Holidays Kashmir">
+          <h3>Wonderlust Travels Kashmir</h3>
+        </div>
+        <p>Your trusted partner for exploring the beauty of Jammu & Kashmir. Creating memorable travel experiences since 2018.</p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/share/15fQDMoHvE/" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/wonderlust_holidays_kashmir?igsh=MXBrdXNhd25tdGNjMg==" target="_blank" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/918899127434" target="_blank" class="social-icon" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-nav">
+        <div class="footer-nav-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="booking.html">Booking</a></li>
+            <li><a href="#plans">Tour Packages</a></li>
+            <li><a href="admin.html">Admin</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-nav-section">
+          <h4>Popular Destinations</h4>
+          <ul>
+            <li><a href="#destinations">Gulmarg</a></li>
+            <li><a href="#destinations">Pahalgam</a></li>
+            <li><a href="#destinations">Sonamarg</a></li>
+            <li><a href="#destinations">Mughal Gardens</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-nav-section">
+          <h4>Contact Us</h4>
+          <ul>
+            <li><i class="fas fa-phone"></i> <a href="tel:+918899127434">+91 8899127434</a></li>
+            <li><i class="fas fa-envelope"></i> <a href="mailto:info@wonderlustkashmir.com">info@wonderlustkashmir.com</a></li>
+            <li><i class="fas fa-map-marker-alt"></i> Srinagar, Jammu & Kashmir, India</li>
+            <li><a href="https://wa.me/918899127434" target="_blank" class="whatsapp-link"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2024 Wonderlust Travels Kashmir. All rights reserved.</p>
+      <p>
+        <a href="privacy-policy.html" target="_blank">Privacy Policy</a> | 
+        <a href="terms-of-service.html" target="_blank">Terms of Service</a> | 
+        <a href="refund-policy.html" target="_blank">Refund Policy</a>
+      </p>
+    </div>
   </footer>
+  
+  <!-- Font Awesome -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" integrity="sha512-Tn2m0TIpgVyTzzvmxLNuqbSJH3JP8jm+Cy3hvHrW7ndTDcJ1w5mBiksqDBb8GpE2ksktFvDB/ykZ0mDpsZj20w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
+  <!-- Scroll Animation Script -->
+  <script>
+    // Mobile menu toggle
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+      document.getElementById('main-nav').classList.toggle('active');
+      this.classList.toggle('active');
+    });
+    
+    // Add scroll animation
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+      
+      // Reveal elements on scroll
+      revealOnScroll();
+    });
+    
+    // Reveal elements when scrolled into view
+    function revealOnScroll() {
+      const elements = document.querySelectorAll('.destination-card, .feature-card, .plan-card');
+      
+      elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementTop < windowHeight - 100) {
+          element.classList.add('revealed');
+        }
+      });
+    }
+    
+    // Scroll indicator click event
+    document.addEventListener('DOMContentLoaded', function() {
+      const scrollIndicator = document.querySelector('.scroll-indicator');
+      if (scrollIndicator) {
+        scrollIndicator.addEventListener('click', function() {
+          window.scrollTo({
+            top: window.innerHeight,
+            behavior: 'smooth'
+          });
+        });
+      }
+      
+      // Add hero dots navigation
+      const heroSlideshow = document.getElementById('hero-slideshow');
+      if (heroSlideshow) {
+        const slides = document.querySelectorAll('.hero-slide-item');
+        const dotsContainer = document.createElement('div');
+        dotsContainer.className = 'hero-dots';
+        
+        slides.forEach((_, index) => {
+          const dot = document.createElement('div');
+          dot.className = 'hero-dot' + (index === 0 ? ' active' : '');
+          dot.addEventListener('click', () => {
+            document.querySelectorAll('.hero-slide-item').forEach(slide => slide.classList.remove('active'));
+            document.querySelectorAll('.hero-dot').forEach(dot => dot.classList.remove('active'));
+            
+            slides[index].classList.add('active');
+            dot.classList.add('active');
+            currentHeroSlide = index;
+          });
+          
+          dotsContainer.appendChild(dot);
+        });
+        
+        heroSlideshow.appendChild(dotsContainer);
+        
+        // Add scroll indicator
+        const indicator = document.createElement('div');
+        indicator.className = 'scroll-indicator';
+        heroSlideshow.appendChild(indicator);
+      }
+      
+      // Run reveal animation on page load
+      revealOnScroll();
+    });
+  </script>
 </body>
 </html> 

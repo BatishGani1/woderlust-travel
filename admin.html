@@ -10,12 +10,32 @@
 </head>
 <body>
   <header class="navbar">
-    <div class="logo">Admin Panel</div>
+    <div class="logo">
+      <img src="./assets/logo.png" alt="Wonderlust Holidays Kashmir" class="logo-img">
+      <span class="logo-text">Admin Panel</span>
+    </div>
     <nav>
       <a href="index.html">Home</a>
     </nav>
   </header>
-  <section class="admin-section">
+
+  <!-- Login Overlay -->
+  <div id="admin-login-overlay" class="admin-login-overlay">
+    <div class="admin-login-container">
+      <h2>Admin Login</h2>
+      <p>Please enter your password to access the admin panel.</p>
+      <form id="admin-login-form" class="admin-login-form">
+        <div class="form-group">
+          <label for="admin-password">Password:</label>
+          <input type="password" id="admin-password" required>
+        </div>
+        <div id="password-error" class="password-error"></div>
+        <button type="submit" class="login-btn">Login</button>
+      </form>
+    </div>
+  </div>
+  
+  <section class="admin-section" id="admin-content" style="display: none;">
     <h2>Manage Tour Plans</h2>
     <form id="plan-form" class="admin-form">
       <input type="hidden" id="plan-id">
